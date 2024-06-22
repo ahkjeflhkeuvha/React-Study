@@ -8,6 +8,7 @@ import About from './pages/about.js'
 import Counter from './pages/counter.js'
 import Input from './pages/input.js'
 import Inputs from './pages/inputs.js';
+import UserList from './pages/list.js';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Link to="/about">About</Link>  |
         <Link to="/counter">Counter</Link>  |
         <Link to="/input">Input</Link>  |  
-        <Link to="/inputs">Inputs</Link>
+        <Link to="/inputs">Inputs</Link>  |  
+        <Link to="/userlist">UserList</Link>
       </nav>
       <Routes>
         <Route path="/home" element={<Home />}></Route>
@@ -25,6 +27,7 @@ function App() {
         <Route path="/counter" element={<Counter />}></Route>
         <Route path="/input" element={<Input />}></Route>
         <Route path="/inputs" element={<Inputs />}></Route>
+        <Route path="/userlist" element={<UserList />}></Route>
       </Routes>
     </div>
   );
