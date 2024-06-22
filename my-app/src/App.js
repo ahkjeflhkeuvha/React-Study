@@ -7,6 +7,7 @@ import Home from './pages/home.js'
 import About from './pages/about.js'
 import Counter from './pages/counter.js'
 import Input from './pages/input.js'
+import Inputs from './pages/inputs.js';
 
 function App() {
   return (
@@ -15,13 +16,15 @@ function App() {
         <Link to="/home">Home</Link>  |
         <Link to="/about">About</Link>  |
         <Link to="/counter">Counter</Link>  |
-        <Link to="/input">Input</Link>
+        <Link to="/input">Input</Link>  |  
+        <Link to="/inputs">Inputs</Link>
       </nav>
       <Routes>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/counter" element={<Counter />}></Route>
-        <Route paht="/input" element={<Input />}></Route>
+        <Route path="/input" element={<Input />}></Route>
+        <Route path="/inputs" element={<Inputs />}></Route>
       </Routes>
     </div>
   );
