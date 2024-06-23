@@ -9,6 +9,7 @@ import Counter from './pages/counter.js'
 import Input from './pages/input.js'
 import Inputs from './pages/inputs.js';
 import UserList from './pages/list.js';
+import TodoList from './pages/todo';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Link to="/counter">Counter</Link>  |
         <Link to="/input">Input</Link>  |  
         <Link to="/inputs">Inputs</Link>  |  
-        <Link to="/userlist">UserList</Link>
+        <Link to="/userlist">UserList</Link>  |
+        <Link to="/todo">Todo</Link>
       </nav>
       <Routes>
         <Route path="/home" element={<Home />}></Route>
@@ -28,6 +30,7 @@ function App() {
         <Route path="/input" element={<Input />}></Route>
         <Route path="/inputs" element={<Inputs />}></Route>
         <Route path="/userlist" element={<UserList />}></Route>
+        <Route path="/todo" element={<TodoList />}></Route>
       </Routes>
     </div>
   );
