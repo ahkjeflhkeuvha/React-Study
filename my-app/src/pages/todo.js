@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import styled from 'styled-components';
 
 const TodoList = () => {
     const [text, setText] = useState("")
     const [Todos, setTodos] = useState([])
+    const [isChecked, setChecked] = useState(false)
 
     const showTodo = (e) => {
         setText(e.target.value)
@@ -15,6 +17,24 @@ const TodoList = () => {
         setText("")
     }
 
+    const removeTodo = (idx) => {
+        setTodos((currentArray) => [...currentArray.splice(idx, 1), ...currentArray])
+        console.log(idx)
+    }
+
+    const Checked = (e) => {
+        const 
+        if (isChecked === true) {
+            setChecked(false)
+            e.target.style.textDecoration = 'line-through'
+        }
+        else {
+            setChecked(true)
+            e.target.style.textDecoration = 'line-through'
+        }
+        console.log(e.target)
+    }
+
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -24,9 +44,15 @@ const TodoList = () => {
                 </button>
             </form>
             <ul>
-                <li>test</li>
                 {Todos.map((item, idx) => {
-                    return <li>{item}</li>
+                    return (<div className="todoList">
+                        <input type="checkbox" value={isChecked} onClick={Checked} className="checkbox-div"></input>
+                        <li key={idx}>{item}
+                            <button onClick={() => removeTodo(idx)}>제거하기</button>
+                        </li>
+                    </div>
+
+                    )
                 })}
             </ul>
         </div>

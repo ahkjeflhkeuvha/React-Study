@@ -2,6 +2,19 @@
   text-align: center;
 }
 
+.App ul {
+  list-style: none;
+  text-align: left;
+}
+
+.App .todoList {
+  display: flex;
+}
+
+.App .checkbox-div {
+  text-decoration: line-through;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
