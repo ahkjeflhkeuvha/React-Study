@@ -1,39 +1,33 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 
 const TodoList = () => {
-    const [text, setText] = useState("")
-    const [Todos, setTodos] = useState([])
-    const [isChecked, setChecked] = useState(false)
+    const [text, setText] = useState("");
+    const [Todos, setTodos] = useState([]);
 
     const showTodo = (e) => {
-        setText(e.target.value)
-    }
+        setText(e.target.value);
+    };
 
     const onSubmit = (e) => {
-        e.preventDefault()
-        if (text.length < 15) setTodos((currentArray) => [text, ...currentArray])
-        setText("")
-    }
+        e.preventDefault();
+        if (text.length < 15) {
+            setTodos((currentArray) => [{ text: text, checked: false }, ...currentArray]);
+        }
+        setText("");
+    };
 
     const removeTodo = (idx) => {
-        setTodos((currentArray) => [...currentArray.splice(idx, 1), ...currentArray])
-        console.log(idx)
-    }
+        setTodos((currentArray) => currentArray.filter((_, index) => index !== idx));
+    };
 
-    const Checked = (e) => {
-        const 
-        if (isChecked === true) {
-            setChecked(false)
-            e.target.style.textDecoration = 'line-through'
-        }
-        else {
-            setChecked(true)
-            e.target.style.textDecoration = 'line-through'
-        }
-        console.log(e.target)
-    }
+    const Checked = (idx) => {
+        setTodos((currentArray) =>
+            currentArray.map((item, index) =>
+                index === idx ? { ...item, checked: !item.checked } : item
+            )
+        );
+    };
 
     return (
         <div>
@@ -45,18 +39,25 @@ const TodoList = () => {
             </form>
             <ul>
                 {Todos.map((item, idx) => {
-                    return (<div className="todoList">
-                        <input type="checkbox" value={isChecked} onClick={Checked} className="checkbox-div"></input>
-                        <li key={idx}>{item}
-                            <button onClick={() => removeTodo(idx)}>제거하기</button>
-                        </li>
-                    </div>
+                    return (
+                        <div className="todoList" key={idx}>
 
-                    )
+                            <li style={{ textDecoration: item.checked ? 'line-through' : 'none' }} className="todo-item">
+                                <input
+                                    type="checkbox"
+                                    checked={item.checked}
+                                    onChange={() => Checked(idx)}
+                                    className="checkbox-div"
+                                ></input>
+                                {item.text}
+                                <button onClick={() => removeTodo(idx)}>제거하기</button>
+                            </li>
+                        </div>
+                    );
                 })}
             </ul>
         </div>
-    )
-}
+    );
+};
 
-export default TodoList
+export default TodoList;

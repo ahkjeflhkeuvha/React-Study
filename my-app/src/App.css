@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  padding: 50px;
+}
+
+.App nav {
+  margin-bottom: 20px;
 }
 
 .App ul {
@@ -7,12 +12,17 @@
   text-align: left;
 }
 
-.App .todoList {
+.App .todo-item {
   display: flex;
+  margin: 10px;
 }
 
-.App .checkbox-div {
-  text-decoration: line-through;
+.App li > button {
+  margin-left: auto;
+}
+
+.App li > button:hover {
+  color: red;
 }
 
 .App-logo {
