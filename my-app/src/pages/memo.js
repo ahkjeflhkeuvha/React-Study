@@ -1,7 +1,10 @@
 import React, {useState} from "react";
 import styled from 'styled-components';
+import {useNavigate} from 'react-router-dom'
 
 const Memo = () => {
+    const navigate = useNavigate();
+    const [isOpen, SetIsOpen] = useState(false);
     const [Title, setTitle] = useState("");
     const [Text, setText] = useState("");
     const [Memos, setMemos] = useState([]);
@@ -22,8 +25,21 @@ const Memo = () => {
         console.log(Memos);
     }
 
+    const showMemo = (idx) => {
+        navigate(`/memo{idx}`)
+    }
+
     const removeMemo = (idx) => {
         setMemos((currentArray) => currentArray.filter((item, index) => index !== idx))
+        console.log(Memos)
+    }
+
+    const openMemo = () => {
+        SetIsOpen(true);
+    }
+
+    const closeMemo = () => {
+        SetIsOpen(false);
     }
 
     return (
@@ -40,7 +56,16 @@ const Memo = () => {
                     return (
                         <div className="memoList" key={idx}>
                             <li>
-                                {item.text}
+                                {item.title}
+                                <button onClick={openMemo}>show memo</button>
+                                {isOpen && (
+                                    <div className="memo-title">
+                                        <h1>{item.title}</h1>
+                                        <p>{item.text}</p>
+                                        <button onClick={closeMemo}>close</button>
+                                        <button onClick={(idx) => removeMemo(idx)}>remove memo</button>
+                                    </div>
+                                )}
                             </li>
                         </div>
                     )
