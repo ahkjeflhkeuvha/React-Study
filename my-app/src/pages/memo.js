@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Memo = () => {
-    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState([]);
     const [Title, setTitle] = useState("");
     const [Text, setText] = useState("");
@@ -21,10 +20,6 @@ const Memo = () => {
         setMemos((currentArray) => [{ title: Title, memo: Text }, ...currentArray]);
         setTitle("");
         setText("");
-    };
-
-    const showMemo = (idx) => {
-        navigate(`/memo/${idx}`);
     };
 
     const removeMemo = (idx) => {
